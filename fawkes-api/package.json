@@ -1,0 +1,22 @@
+{
+  "name": "fawkes-api",
+  "version": "1.0.0",
+  "description": "Fawkes Internal Website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix ../client",
+    "dev": "concurrently \"npm run server\"  \"npm run client\""
+  },
+  "author": "Jeremy Smith",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
