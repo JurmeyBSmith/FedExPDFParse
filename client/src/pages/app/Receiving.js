@@ -27,7 +27,7 @@ handleSubmit(event){
   //  do async request
   axios.post('http://localhost:3030/api/receiving', {
     // send the data
-    id: this.state.value
+    trackingNumber: this.state.value
   })
   // handle response 
   .then(function (response) {
