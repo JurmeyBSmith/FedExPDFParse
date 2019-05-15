@@ -25,6 +25,7 @@ var connection = mysql.createConnection({
 
 //require("./routes/receiving")(app, connection);
 require("./routes/receivingv2")(app, connection);
+require("./routes/databaseInit")(app, connection);
 //require("./routes/trackingNumber")(app, connection);
 
 connection.connect((err) => {
