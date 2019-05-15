@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import { Header, Segment } from 'semantic-ui-react'
+//import { Header, Segment } from 'semantic-ui-react'
 
-import {Menu} from 'semantic-ui-react';
+//import {Menu} from 'semantic-ui-react';
 import Receiving from './Receiving.js';
+import Edit from './Edit.js';
 import NavBar from './navBar.js';
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
   handleItemClick = (e, {name}) => this.setState({activeItem: name }) 
    
   render() {
-    const { activeItem } = this.state
+    //const { activeItem } = this.state
     return (
 
       <Router>
@@ -20,7 +21,7 @@ class App extends Component {
         <NavBar />
           {/* <Route path="/" exact component={} /> */}
           <Route path="/receiving" component={Receiving} />
-          
+          <Route path="/edit" component={Edit} />
           {/* <Route path="/users/" component={} /> */}
         </div>
         <header className="App-header">

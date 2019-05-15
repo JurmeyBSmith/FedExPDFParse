@@ -23,7 +23,8 @@ var connection = mysql.createConnection({
   database: 'test'
 })
 
-require("./routes/receiving")(app, connection);
+//require("./routes/receiving")(app, connection);
+require("./routes/receivingv2")(app, connection);
 //require("./routes/trackingNumber")(app, connection);
 
 connection.connect((err) => {

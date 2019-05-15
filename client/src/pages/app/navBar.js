@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Segment } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import { Menu } from 'semantic-ui-react';
 
 class NavBar extends Component {
@@ -25,7 +25,7 @@ class NavBar extends Component {
             position='right'
             active={activeItem === 'id'}
             onClick={this.handleItemClick}
-            a href="/receiving">Recieve
+            a href="/receiving">Receive
             </Menu.Item>
           <Menu.Item
             name='placeholder'
