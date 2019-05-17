@@ -22,14 +22,23 @@ module.exports = (app, connection) => {
                     .then(a_pdfData => {
                         console.log("Response: ", a_pdfData.text);
                         //res.send(a_pdfData.text);
-                        connection.query(pull_Data(a_pdfData), function (err, result) {
+                        var jsonData = pull_Data(a_pdfData);
+                        connection.query(jsonData.sql, function (err, result) {
                             if (err) {
                                 console.log("Entering data into DB: Error:", err)
                                 throw err;
                             }
                             console.log("Post Successful");
                             //console.log("Year: ", date.getYear()+1900);
-                            res.send(result)
+                            var jsonResponse = {
+                                success: true,
+                                message: 'Parsed and entered data into the database.',
+                                data: {
+                                    pdfPath: a_pdfPath,
+                                    datat: jsonData
+                                }
+                            }
+                            res.status(200).send(jsonResponse);
                         });
 
                     }).catch(err => {
@@ -162,7 +171,19 @@ module.exports = (app, connection) => {
             "\nShipped from State: ", ShipState,
             "\nShipped from Country: ", ShipCountry
         );
-        return sql;
+        var jsonData = {
+            sql: sql,
+            trackingNumber: TrackingNumber,
+            reference: Reference, 
+            shipDate: ShipDate,
+            deliveryDate: DeliveryDate,
+            signee: Signee,
+            status: Status,
+            shipcity: ShipCity,
+            shipState: ShipState,
+            shipCountry: ShipCountry
+        } 
+        return jsonData;
     }
     function get_TrackingNumber(text, i) {
         return text[i + 3].replace('ship', '');

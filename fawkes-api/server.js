@@ -23,6 +23,7 @@ var connection = mysql.createConnection({
   database: 'test'
 })
 
+app.use(express.static('routes/pdfFiles'));
 //require("./routes/receiving")(app, connection);
 require("./routes/receivingv2")(app, connection);
 require("./routes/databaseInit")(app, connection);

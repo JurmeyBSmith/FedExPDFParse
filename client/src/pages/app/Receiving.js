@@ -6,6 +6,9 @@ import axios from 'axios';
 //import { Menu } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 //import NavBar from './navBar.js';
+import Edit from './Edit';
+
+var jsonData;
 
 class Receiving extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -15,6 +18,8 @@ class Receiving extends Component {
     this.state = { 
       value: '795602367739',
       toEdit: false,
+      step: 1,
+      jsonData: false
      };
 
     this.handleChange = this.handleChange.bind(this);
@@ -48,11 +53,14 @@ class Receiving extends Component {
           }).then((response) => {
               // now we need to set our state and hand over some props
               console.log("what is this at bottom level:", this)
-              this.setState({ toEdit: true});
+              this.setState({jsonData: response})
+              this.setState({ step: 2});
+              
+              jsonData = response;
               console.log('The state is: ', this.state);
           })
           .catch(err => {
-
+              console.log("Yeaaah.. Post never went through")
           })
         }
       })
@@ -66,23 +74,39 @@ class Receiving extends Component {
 
   render() {
     //const { activeItem } = this.state
-    if(this.state.toEdit === true) {
-      console.log(this.state)
-      return <Redirect to='/edit' />
+    if (this.state.step === 1) {
+      return (
+        <header className="App-header">
+          <div class="ui icon input">
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" placeholder="Input Barcode..." value={this.state.value} onChange={this.handleChange} />
+              <i class="big barcode icon"></i>
+            </form>
+          </div>
+        </header>
+  
+  
+      );
     }
-    return (
+    // if (this.state.step === 2) {
+    //   return (
+    //     <Step2 {this.state.returnedData} />
+    //   )
+    // }
+    // if(this.state.toEdit === true) {
+    //   console.log(this.state)
+    //   return <Redirect to='/edit' />
+    // }
+    if(this.state.step === 2) {
+      console.log(this.state)
+      return <Edit jsonData={this.state.jsonData}/>
+    }
 
-      <header className="App-header">
-        <div class="ui icon input">
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Input Barcode..." value={this.state.value} onChange={this.handleChange} />
-            <i class="big barcode icon"></i>
-          </form>
-        </div>
-      </header>
-
-
-    );
+    // if ( this.state.step === "Step1Err") {
+    //   <Step1 {this.trac}/>
+    //   <Step1Err />
+    // }
+    
   }
 }
 export default Receiving;

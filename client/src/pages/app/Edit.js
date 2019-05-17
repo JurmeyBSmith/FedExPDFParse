@@ -1,53 +1,87 @@
 import React, { Component } from 'react';
 import { Document, Page } from "react-pdf/dist/entry.webpack";
-
+//import PDFfile from "localhost:3030/785074206725.pdf";
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 //import { BrowserRouter as Router, Route } from "react-router-dom";
 //import './Edit.css';
-//import { Header, Segment } from 'semantic-ui-react'
+import { Header, Segment, Grid, Divider } from 'semantic-ui-react'
 //import {Menu} from 'semantic-ui-react';
 // import Receiving from './Receiving.js';
 // import Edit from './Edit.js';
 // import NavBar from './navBar.js';
+var jsonData; 
+console.log("JsonData", jsonData);
 
 class Edit extends Component {
-  state = { numPages: null, pageNumber: 1 }
+  //state = { numPages: null, pageNumber: 1 }
   //handleItemClick = (e, {name}) => this.setState({activeItem: name }) 
+  constructor(props) {
+    super(props);
+    console.log('The props: ', this.props)
+  }
    
-  onDocumentLoadSuccess = ({ numPages }) => {
-    this.setState({ numPages });
-  };
-
-  goToPrevPage = () =>
-    this.setState(state => ({ pageNumber: state.pageNumber - 1 }));
-  goToNextPage = () =>
-    this.setState(state => ({ pageNumber: state.pageNumber + 1 }));
-
 
   render() {
-    const { pageNumber, numPages } = this.state;
-    
+    //const { pageNumber, numPages } = this.state;
+    var myVar = this.props.jsonData.data.data.datat;
+    var pdfPath = "http://localhost:3030/" + myVar.trackingNumber + ".pdf";
     return (
-
-        <div>
-        <nav>
-          <button onClick={this.goToPrevPage}>Prev</button>
-          <button onClick={this.goToNextPage}>Next</button>
-        </nav>
-
-        <div style={{ width: 600 }}>
-          <Document
-            file="./785074206725.pdf"
-            onLoadSuccess={this.onDocumentLoadSuccess}
-          >
-            <Page pageNumber={pageNumber} width={600} />
-          </Document>
-        </div>
-
-        <p>
-          Page {pageNumber} of {numPages}
-        </p>
-      </div>
+        
+      <header className="App-header">
       
+        <Segment size="massive">
+        <hr width="1450px"></hr>
+          <Grid columns={2} relaxed='very'>  
+          <Grid.Column>   
+           <div>
+           
+          <embed src={pdfPath} width="680px" height="750px" align="left" />
+        </div>
+        </Grid.Column>
+        
+        <Grid.Column>
+        <Form>
+          <Form.Field>
+            <label>Tracking Number</label>
+            <input value={myVar.trackingNumber} />
+          </Form.Field>
+          <Form.Field>
+            <label>Status</label>
+            <input value={myVar.status} />
+          </Form.Field>
+          <Form.Field>
+            <label>Delivery Date</label>
+            <input value={myVar.deliveryDate} />
+          </Form.Field>
+          <Form.Field>
+            <label>Shipped Date</label>
+            <input value={myVar.shipDate} />
+          </Form.Field>
+          <Form.Field>
+            <label>City</label>
+            <input value={myVar.shipcity} />
+          </Form.Field>
+          <Form.Field>
+            <label>State</label>
+            <input value={myVar.shipState} />
+          </Form.Field>
+          <Form.Field>
+            <label>Country</label>
+            <input value={myVar.shipCountry} />
+          </Form.Field>
+          <Form.Field>
+            <label>Invoice Number#</label>
+            <input value={myVar.reference} />
+          </Form.Field>
+          
+          <Button type='submit'>Submit</Button>
+        </Form>
+        </Grid.Column>
+        </Grid> 
+        <Divider vertical>Edit</Divider>
+        </Segment>
+      
+      </header>
     );
   }
 }
