@@ -63,6 +63,11 @@ class Receiving extends Component {
           .catch(err => {
               console.log("Yeaaah.. Post never went through")
           })
+        }else{
+          this.setState({jsonData: response})
+              this.setState({ step: 2});
+              
+              jsonData = response;
         }
       })
       .catch(function (error) {

@@ -43,35 +43,35 @@ class Edit extends Component {
         <Form>
           <Form.Field>
             <label>Tracking Number</label>
-            <input value={myVar.trackingNumber} />
+            <input defaultValue={myVar.trackingNumber} />
           </Form.Field>
           <Form.Field>
             <label>Status</label>
-            <input value={myVar.status} />
+            <input defaultValue={myVar.status} />
           </Form.Field>
           <Form.Field>
             <label>Delivery Date</label>
-            <input value={myVar.deliveryDate} />
+            <input defaultValue={myVar.deliveryDate} />
           </Form.Field>
           <Form.Field>
             <label>Shipped Date</label>
-            <input value={myVar.shipDate} />
+            <input defaultValue={myVar.shipDate} />
           </Form.Field>
           <Form.Field>
             <label>City</label>
-            <input value={myVar.shipcity} />
+            <input defaultValue={myVar.shipcity} />
           </Form.Field>
           <Form.Field>
             <label>State</label>
-            <input value={myVar.shipState} />
+            <input defaultValue={myVar.shipState} />
           </Form.Field>
           <Form.Field>
             <label>Country</label>
-            <input value={myVar.shipCountry} />
+            <input defaultValue={myVar.shipCountry} />
           </Form.Field>
           <Form.Field>
             <label>Invoice Number#</label>
-            <input value={myVar.reference} />
+            <input defaultValue={myVar.reference} />
           </Form.Field>
           
           <Button type='submit'>Submit</Button>
