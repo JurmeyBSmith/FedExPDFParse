@@ -4,6 +4,18 @@ const pdf = require('pdf-parse');
 
 module.exports = (app, connection) => {
 
+    app.post('/receiving/update', (req, res) => {
+        var form = req.body.formObj;
+        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${form.trackingNumber}\', \`reference_number\` = \'${form.reference}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.shipcity}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.deliveryDate}\', \`shipped_date\` = \'${form.shipDate}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.trackingNumber}\'`; 
+        connection.query(sql, function (err, result) {
+            if(err){
+                console.log(err);
+            }
+            res.send(result)
+          });
+        
+    })
+
     app.post('/api/testing', function (req, res) {
 
         var date = new Date();
@@ -35,7 +47,7 @@ module.exports = (app, connection) => {
                                 message: 'Parsed and entered data into the database.',
                                 data: {
                                     pdfPath: a_pdfPath,
-                                    datat: jsonData
+                                    data: jsonData
                                 }
                             }
                             res.status(200).send(jsonResponse);
