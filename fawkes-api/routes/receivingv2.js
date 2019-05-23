@@ -11,6 +11,7 @@ module.exports = (app, connection) => {
             if(err){
                 console.log(err);
             }
+            console.log("Updated");
             res.send(result)
           });
         
@@ -20,7 +21,7 @@ module.exports = (app, connection) => {
 
         var date = new Date();
         var year = req.body.year;//date.getYear()+1900;
-        console.log('THe year:', year);
+        console.log('The year:', year);
         const trackingNumber = req.body.trackingNumber;
         const pdfPath = "routes/pdfFiles/" + trackingNumber + ".pdf";
         const strBaseFedEx = "https://www.fedex.com/trackingCal/retrievePDF.jsp?trackingNumber=" + trackingNumber + "&trackingQualifier=1" + year + "~" + trackingNumber + "~FDEG&trackingCarrier=FDXG&shipDate=&destCountry=&locale=en_US&accountNbr=148750947&type=SPOD&appType=&anon=";

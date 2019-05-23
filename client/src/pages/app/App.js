@@ -25,6 +25,8 @@ class App extends Component {
           {/* <Route path="/users/" component={} /> */}
         </div>
         <header className="App-header">
+          <h1>Welcome to the Fawkes Engineering Internal WebPage!</h1>
+          <h3>To Receive Inventory, go to "Receive" in the top Menu Bar</h3>
       </header>
       </Router>
       
