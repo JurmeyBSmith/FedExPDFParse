@@ -27,8 +27,23 @@ module.exports = (app, connection) => {
     })
 
     app.post('/receiving/update', (req, res) => {
+       
         var form = req.body.formObj;
-        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${req.body.trackingNumber}\', \`reference_number\` = \'${req.body.reference}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.shipcity}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.deliveryDate}\', \`shipped_date\` = \'${form.shipDate}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.trackingNumber}\'`; 
+        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${form.trackingNumber}\', \`reference_number\` = \'${form.reference}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.shipcity}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.deliveryDate}\', \`shipped_date\` = \'${form.shipDate}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.trackingNumber}\'`; 
+        connection.query(sql, function (err, result) {
+            if(err){
+                console.log(err);
+            }
+            console.log("Updated");
+            res.send(result)
+          });
+        
+    })
+
+    app.post('/search/update', (req, res) => {
+       console.log("FORMobj: ", req.body.formObj);
+        var form = req.body.formObj;
+        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${form.tracking_number}\', \`reference_number\` = \'${form.reference_number}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.city}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.received_date}\', \`shipped_date\` = \'${form.shipped_date}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.tracking_number}\'`; 
         connection.query(sql, function (err, result) {
             if(err){
                 console.log(err);

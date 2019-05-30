@@ -30,14 +30,16 @@ class Receiving extends Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
-    if(this.state.value.length !== 11){
-      this.setState({type: "ui error icon input"})
-    }else if(isNaN(this.state.value)){
-      this.setState({type: "ui error icon input"})
-    }else {
-      this.setState({type: "ui icon input"})
-    }
+    this.setState({ value: event.target.value,  });
+    //console.log("lenght: ", this.state.value.length)
+    //Error UI
+    // if(this.state.value.length !== 12){
+    //   this.setState({type: "ui error icon input"})
+    // }else if(isNaN(this.state.value)){
+    //   this.setState({type: "ui error icon input"})
+    // }else {
+    //   this.setState({type: "ui icon input"})
+    // }
   }
   handleSubmit(event) {
     //  do async request
