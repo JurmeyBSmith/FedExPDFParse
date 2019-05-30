@@ -4,9 +4,31 @@ const pdf = require('pdf-parse');
 
 module.exports = (app, connection) => {
 
+    
+
+    app.post('/search', (req, res) => {
+        console.log('req.body: ', req.body.value);
+        var name = req.body.name;
+        var value = req.body.value;
+        console.log("Request: ", req.body, "\nName: ", req.body.name, "VAlue: ", req.body.value);
+        var sql = `SELECT * FROM \`shipment\` WHERE \`${name}\` LIKE '${value}'`;
+        connection.query(sql, (err, result) => {
+            if(err){
+                console.log(err);
+                res.send("ERRER");
+            }else{
+                //for(var i=0; i < result.length; i++){
+                    console.log("Result", result[0]);
+                //}
+                
+                res.send(result);
+            }
+        })
+    })
+
     app.post('/receiving/update', (req, res) => {
         var form = req.body.formObj;
-        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${form.trackingNumber}\', \`reference_number\` = \'${form.reference}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.shipcity}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.deliveryDate}\', \`shipped_date\` = \'${form.shipDate}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.trackingNumber}\'`; 
+        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${req.body.trackingNumber}\', \`reference_number\` = \'${req.body.reference}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.shipcity}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.deliveryDate}\', \`shipped_date\` = \'${form.shipDate}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.trackingNumber}\'`; 
         connection.query(sql, function (err, result) {
             if(err){
                 console.log(err);

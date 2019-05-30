@@ -51,7 +51,7 @@ class Edit extends Component {
     // update the state?
     this.setState({ submitted: true })
 
-    console.log(this.state);
+    console.log("State", this.state);
     //post
     var formObj = this.state;
 

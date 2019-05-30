@@ -17,7 +17,7 @@ class NavBar extends Component {
             position='left'
             active={activeItem === 'id'}
             onClick={this.handleItemClick}
-            a href="/">
+            href="/">
             <Header as="h1" position='left' textAlign='left'>FAWKES ENGINEERING</Header>
       </Menu.Item>
           <Menu.Item
@@ -25,21 +25,21 @@ class NavBar extends Component {
             position='right'
             active={activeItem === 'id'}
             onClick={this.handleItemClick}
-            a href="/receiving">Receive
+            href="/receiving">Receive
+            </Menu.Item>
+          <Menu.Item
+            name='Search'
+            position='right'
+            active={activeItem === 'id'}
+            onClick={this.handleItemClick}
+            href="/search">Search
             </Menu.Item>
           <Menu.Item
             name='placeholder'
             position='right'
             active={activeItem === 'id'}
             onClick={this.handleItemClick}
-            a href="/">placeholder
-            </Menu.Item>
-          <Menu.Item
-            name='placeholder'
-            position='right'
-            active={activeItem === 'id'}
-            onClick={this.handleItemClick}
-            a href="/">placeholder
+            href="/">placeholder
             </Menu.Item>
 
         </Menu.Menu>

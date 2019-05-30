@@ -4,9 +4,11 @@ import './App.css';
 //import { Header, Segment } from 'semantic-ui-react'
 
 //import {Menu} from 'semantic-ui-react';
+import Search from './Search.js';
 import Receiving from './Receiving.js';
 import Edit from './Edit.js';
 import NavBar from './navBar.js';
+import Home from './Home.js';
 
 class App extends Component {
   state = {}
@@ -20,14 +22,14 @@ class App extends Component {
         <div>
         <NavBar />
           {/* <Route path="/" exact component={} /> */}
+          
           <Route path="/receiving" component={Receiving} />
           <Route path="/edit" component={Edit} />
+          <Route path="/search" component={Search} />
+          <Route path="/" component={Home} />
           {/* <Route path="/users/" component={} /> */}
         </div>
-        <header className="App-header">
-          <h1>Welcome to the Fawkes Engineering Internal WebPage!</h1>
-          <h3>To Receive Inventory, go to "Receive" in the top Menu Bar</h3>
-      </header>
+        
       </Router>
       
 
