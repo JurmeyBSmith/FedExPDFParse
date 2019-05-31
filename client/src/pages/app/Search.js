@@ -88,6 +88,7 @@ class Search extends Component {
       formObj,
     }).then((response) =>{
       console.log("Updated: ", response);
+      alert("Entry Updated!")
       //this.setState({ step: 4})
     })
   }
@@ -110,9 +111,9 @@ class Search extends Component {
     this.setState({ value: event.target.value, name: event.target.name })
   }
   handleSubmit() {
-    alert("Value: " + this.state.value +
-      "\nName: " + this.state.name
-    )
+    // alert("Value: " + this.state.value +
+    //   "\nName: " + this.state.name
+    // )
 
     var name = this.state.name;
     var value = this.state.value;
@@ -123,7 +124,7 @@ class Search extends Component {
     }).then((response) => {
       this.setState({ step: 2, responseData: response.data[0], entries: response.data });
       console.log("RESPONSE ", response);
-
+      
     })
     // .catch(err){
     //   console.log("Error")
@@ -387,6 +388,9 @@ class Search extends Component {
 
         </header>
       );
+    } else if (this.state.step === 4) {
+      //return <header className="App-header"><h1 align="center">Submitted!</h1></header>
+      return <Redirect to='/' />
     }
 
 

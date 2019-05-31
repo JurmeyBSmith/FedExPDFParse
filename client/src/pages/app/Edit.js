@@ -59,17 +59,17 @@ class Edit extends Component {
       formObj
     })//.then()
 
-    alert(
-      'Tracking Number "' + this.state.trackingNumber + '", was submitted' +
-      '\nStatus "' + this.state.status + '", was submitted' +
-      '\nDelivery Date "' + this.state.deliveryDate + '", was submitted' +
-      '\nShip Date "' + this.state.shipDate + '", was submitted' +
-      '\nCity "' + this.state.shipcity + '", was submitted' +
-      '\nState "' + this.state.shipState + '", was submitted' +
-      '\nCountry "' + this.state.shipCountry + '", was submitted' +
-      '\nReference Number "' + this.state.reference + '", was submitted'
+    // alert(
+    //   'Tracking Number "' + this.state.trackingNumber + '", was submitted' +
+    //   '\nStatus "' + this.state.status + '", was submitted' +
+    //   '\nDelivery Date "' + this.state.deliveryDate + '", was submitted' +
+    //   '\nShip Date "' + this.state.shipDate + '", was submitted' +
+    //   '\nCity "' + this.state.shipcity + '", was submitted' +
+    //   '\nState "' + this.state.shipState + '", was submitted' +
+    //   '\nCountry "' + this.state.shipCountry + '", was submitted' +
+    //   '\nReference Number "' + this.state.reference + '", was submitted'
 
-    );
+    // );
 
   }
 

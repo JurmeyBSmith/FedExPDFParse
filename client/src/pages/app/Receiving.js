@@ -99,7 +99,7 @@ class Receiving extends Component {
         console.log("This is a 400 Err: ", error);
       });
 
-    alert('Barcode "' + this.state.value + '", was submitted');
+    //alert('Barcode "' + this.state.value + '", was submitted');
     event.preventDefault();
   }
   }

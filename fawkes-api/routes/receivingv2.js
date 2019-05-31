@@ -43,7 +43,7 @@ module.exports = (app, connection) => {
     app.post('/search/update', (req, res) => {
        console.log("FORMobj: ", req.body.formObj);
         var form = req.body.formObj;
-        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${form.tracking_number}\', \`reference_number\` = \'${form.reference_number}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.shipState}\', \`zip\` = 'zip', \`city\` = \'${form.city}\', \`country\` = \'${form.shipCountry}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.received_date}\', \`shipped_date\` = \'${form.shipped_date}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.tracking_number}\'`; 
+        var sql = `UPDATE \`shipment\` SET \`tracking_number\` = \'${form.tracking_number}\', \`reference_number\` = \'${form.reference}\', \`store\` = 'store', \`street\` = 'street', \`state\` = \'${form.state}\', \`zip\` = 'zip', \`city\` = \'${form.shipcity}\', \`country\` = \'${form.country}\', \`status\` = \'${form.status}\', \`received_date\` = \'${form.received_date}\', \`shipped_date\` = \'${form.shipped_date}\' WHERE \`shipment\`.\`tracking_number\` = \'${form.tracking_number}\'`; 
         connection.query(sql, function (err, result) {
             if(err){
                 console.log(err);
