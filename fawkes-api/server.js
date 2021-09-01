@@ -14,12 +14,12 @@ app.use(function(req, res, next) {
 // ---
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-const port = 3030;
+const port = 3306;
 var connection = mysql.createConnection({
   host: 'localhost',
-  user: 'foo',
-  password: 'bar',
-  port: '8889',
+  user: 'root',
+  password: '',
+  port: '3306',
   database: 'test'
 })
 
