@@ -7,12 +7,10 @@ import Edit from './Edit';
 import './css/Search.css';
 
 
-
 class Search extends Component {
 
   constructor(props) {
     super(props);
-
 
     console.log('The props: ', this.props);
     // sync state and props together
@@ -47,7 +45,7 @@ class Search extends Component {
     console.log("Entrye: ", entry);
     this.setState({ step: 3, responseData: entry });
   }
-  //Redner table data
+  //Render table data
   renderTableData() {
     return this.state.entries.map((entry, index) => {
       const { shipment_id, tracking_number, reference_number, store, street, state, zip, city, country, status, received_date, shipped_date } = entry
@@ -89,7 +87,7 @@ class Search extends Component {
     }).then((response) =>{
       console.log("Updated: ", response);
       alert("Entry Updated!")
-      //this.setState({ step: 4})
+    
     })
   }
   handleEditChange = (e) => {    
@@ -100,20 +98,15 @@ class Search extends Component {
   currentState[name] = value;
 
   this.setState({ responseData: currentState });
-    
   console.log("ResponseData: ", this.state.responseData);
     
-    
-    //this.setState({ [e.target.name]: e.target.value });
+ 
 
   }
   handleChange(event) {
     this.setState({ value: event.target.value, name: event.target.name })
   }
   handleSubmit() {
-    // alert("Value: " + this.state.value +
-    //   "\nName: " + this.state.name
-    // )
 
     var name = this.state.name;
     var value = this.state.value;
@@ -126,9 +119,7 @@ class Search extends Component {
       console.log("RESPONSE ", response);
       
     })
-    // .catch(err){
-    //   console.log("Error")
-    // }
+
   }
 
 
@@ -158,16 +149,18 @@ class Search extends Component {
             <Form.Field>
               <label>Tracking Number</label>
               <input placeholder="Tracking Number" onChange={this.handleChange} name='tracking_number' />
-
             </Form.Field>
+
             <Form.Field>
               <label>Status</label>
               <input placeholder="Status" onChange={this.handleChange} name='status' />
             </Form.Field>
+
             <Form.Field>
               <label>Delivery Date</label>
               <input placeholder="Delivery Date" onChange={this.handleChange} name='received_date' />
             </Form.Field>
+
             <Form.Field>
               <label>Shipped Date</label>
               <input placeholder="Ship Date" onChange={this.handleChange} name='shipped_date' />
@@ -177,6 +170,7 @@ class Search extends Component {
               <label>City</label>
               <input placeholder="City" onChange={this.handleChange} name='city' />
             </Form.Field>
+
             <Form.Field>
               <label>State</label>
               <input type="text" list="states" placeholder="State" onChange={this.handleChange} name='state' />
@@ -235,6 +229,7 @@ class Search extends Component {
                 <option value="WY">Wyoming</option>
               </datalist>
             </Form.Field>
+
             <Form.Field>
               <label>Country</label>
               <input type="text" list="countries" placeholder="US" onChange={this.handleChange} name='country' />
@@ -245,6 +240,7 @@ class Search extends Component {
                 <option value="MX"></option>
               </datalist>
             </Form.Field>
+
             <Form.Field>
               <label>Invoice Number#</label>
               <input
@@ -393,144 +389,6 @@ class Search extends Component {
       return <Redirect to='/' />
     }
 
-
-
-
-
-
-    //   if (this.state.step === 1) {
-    //     return (
-    //       <header className="App-header">
-    //         <h1>SEARCH</h1>
-    //         <p>Please enter one field below to search entries matching that field.</p>
-
-
-    //         <Form onSubmit={this.handleSubmit} inverted>
-    //           <Form.Field>
-    //             <label>Tracking Number</label>
-    //             <input placeholder="Tracking Number" onChange={this.handleChange} name='tracking_number' />
-
-    //           </Form.Field>
-    //           <Form.Field>
-    //             <label>Status</label>
-    //             <input placeholder="Status" onChange={this.handleChange} name='status' />
-    //           </Form.Field>
-    //           <Form.Field>
-    //             <label>Delivery Date</label>
-    //             <input placeholder="Delivery Date" onChange={this.handleChange} name='received_date' />
-    //           </Form.Field>
-    //           <Form.Field>
-    //             <label>Shipped Date</label>
-    //             <input placeholder="Ship Date" onChange={this.handleChange} name='shipped_date' />
-    //           </Form.Field>
-
-    //           <Form.Field>
-    //             <label>City</label>
-    //             <input placeholder="City" onChange={this.handleChange} name='city' />
-    //           </Form.Field>
-    //           <Form.Field>
-    //             <label>State</label>
-    //             <input type="text" list="states" placeholder="State" onChange={this.handleChange} name='state' />
-    //             <datalist id="states">
-
-    //               <option value="AL">Alabama</option>
-    //               <option value="AK">Alaska</option>
-    //               <option value="AZ">Arizona</option>
-    //               <option value="AR">Arkansas</option>
-    //               <option value="CA">California</option>
-    //               <option value="CO">Colorado</option>
-    //               <option value="CT">Connecticut</option>
-    //               <option value="DE">Delaware</option>
-    //               <option value="DC">District Of Columbia</option>
-    //               <option value="FL">Florida</option>
-    //               <option value="GA">Georgia</option>
-    //               <option value="HI">Hawaii</option>
-    //               <option value="ID">Idaho</option>
-    //               <option value="IL">Illinois</option>
-    //               <option value="IN">Indiana</option>
-    //               <option value="IA">Iowa</option>
-    //               <option value="KS">Kansas</option>
-    //               <option value="KY">Kentucky</option>
-    //               <option value="LA">Louisiana</option>
-    //               <option value="ME">Maine</option>
-    //               <option value="MD">Maryland</option>
-    //               <option value="MA">Massachusetts</option>
-    //               <option value="MI">Michigan</option>
-    //               <option value="MN">Minnesota</option>
-    //               <option value="MS">Mississippi</option>
-    //               <option value="MO">Missouri</option>
-    //               <option value="MT">Montana</option>
-    //               <option value="NE">Nebraska</option>
-    //               <option value="NV">Nevada</option>
-    //               <option value="NH">New Hampshire</option>
-    //               <option value="NJ">New Jersey</option>
-    //               <option value="NM">New Mexico</option>
-    //               <option value="NY">New York</option>
-    //               <option value="NC">North Carolina</option>
-    //               <option value="ND">North Dakota</option>
-    //               <option value="OH">Ohio</option>
-    //               <option value="OK">Oklahoma</option>
-    //               <option value="OR">Oregon</option>
-    //               <option value="PA">Pennsylvania</option>
-    //               <option value="RI">Rhode Island</option>
-    //               <option value="SC">South Carolina</option>
-    //               <option value="SD">South Dakota</option>
-    //               <option value="TN">Tennessee</option>
-    //               <option value="TX">Texas</option>
-    //               <option value="UT">Utah</option>
-    //               <option value="VT">Vermont</option>
-    //               <option value="VA">Virginia</option>
-    //               <option value="WA">Washington</option>
-    //               <option value="WV">West Virginia</option>
-    //               <option value="WI">Wisconsin</option>
-    //               <option value="WY">Wyoming</option>
-    //             </datalist>
-    //           </Form.Field>
-    //           <Form.Field>
-    //             <label>Country</label>
-    //             <input type="text" list="countries" placeholder="US" onChange={this.handleChange} name='country' />
-    //             <datalist id="countries">
-    //               <option value="US"></option>
-    //               <option value="CA"></option>
-    //               <option value="UK"></option>
-    //               <option value="MX"></option>
-    //             </datalist>
-    //           </Form.Field>
-    //           <Form.Field>
-    //             <label>Invoice Number#</label>
-    //             <input
-    //               name='reference_number'
-    //               placeholder="Invoice Number"
-    //               onChange={this.handleChange} />
-    //           </Form.Field>
-
-    //           <Button type='submit'>Submit</Button>
-    //         </Form>
-
-    //       </header>
-    //     )
-
-    //   } if (this.state.step === 2) {
-    //     return (
-    //       <header className="App-header" >
-    //       <h1>Response</h1>
-    //       <Segment>
-    //         <Form>
-    //           <Form.Field>
-    //             <label>Tracking Number</label>
-    //             <input
-    //               name='trackingNumber'
-    //               value={this.state.responseData.tracking_number}
-    //               onChange={this.handleChange}
-    //             />
-    //           </Form.Field>
-
-    //         </Form>
-    //       </Segment>
-    //       </header>
-
-    // )
-    //   };
   }
 
 };
