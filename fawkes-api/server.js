@@ -2,7 +2,6 @@ const express = require('express');
 var mysql = require('mysql')
 const bodyParser = require('body-parser');
 var axios = require('axios');
-//var pdfUtil = require('pdf-to-text');
 
 const app = express();
 // allow cors
