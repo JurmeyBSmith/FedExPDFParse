@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import { Document, Page } from "react-pdf/dist/entry.webpack";
-//import PDFfile from "localhost:3030/785074206725.pdf";
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-//import { BrowserRouter as Router, Route } from "react-router-dom";
-//import './Edit.css';
 import { Header, Segment, Grid, Divider } from 'semantic-ui-react'
 import Axios from 'axios';
-//import {Menu} from 'semantic-ui-react';
-// import Receiving from './Receiving.js';
-// import Edit from './Edit.js';
-// import NavBar from './navBar.js';
 var jsonData;
 console.log("JsonData", jsonData);
 
 class Edit extends Component {
-  //state = { numPages: null, pageNumber: 1 }
-  //handleItemClick = (e, {name}) => this.setState({activeItem: name }) 
 
   constructor(props) {
     super(props);
@@ -48,7 +39,6 @@ class Edit extends Component {
     const { trackingNumber, reference } = this.state;
 
     // go get the values in the form 
-    // update the state?
     this.setState({ submitted: true })
 
     console.log("State", this.state);
@@ -57,24 +47,11 @@ class Edit extends Component {
 
     axios.post('http://localhost:3030/receiving/update', {
       formObj
-    })//.then()
-
-    // alert(
-    //   'Tracking Number "' + this.state.trackingNumber + '", was submitted' +
-    //   '\nStatus "' + this.state.status + '", was submitted' +
-    //   '\nDelivery Date "' + this.state.deliveryDate + '", was submitted' +
-    //   '\nShip Date "' + this.state.shipDate + '", was submitted' +
-    //   '\nCity "' + this.state.shipcity + '", was submitted' +
-    //   '\nState "' + this.state.shipState + '", was submitted' +
-    //   '\nCountry "' + this.state.shipCountry + '", was submitted' +
-    //   '\nReference Number "' + this.state.reference + '", was submitted'
-
-    // );
+    })
 
   }
 
   render() {
-    //const { pageNumber, numPages } = this.state;
     var myVar = this.state;
     var pdfPath = "http://localhost:3030/" + myVar.trackingNumber + ".pdf";
     if (this.state.submitted === false) {
@@ -204,7 +181,6 @@ class Edit extends Component {
         </header>
       );
     } else if (this.state.submitted === true) {
-      //return <header className="App-header"><h1 align="center">Submitted!</h1></header>
       return <Redirect to='/' />
     }
   }
