@@ -10,7 +10,6 @@ class NavBar extends Component {
     return (
 
       <Menu>
-        {/* <Header as="h1" position='left' textAlign='left'>FAWKES ENGINEERING</Header> */}
         <Menu.Menu position='right'>
           <Menu.Item
             name='home'
@@ -18,7 +17,7 @@ class NavBar extends Component {
             active={activeItem === 'id'}
             onClick={this.handleItemClick}
             href="/">
-            <Header as="h1" position='left' textAlign='left'>FAWKES ENGINEERING</Header>
+            <Header as="h1" position='left' textAlign='left'>FedExPDF Parse</Header>
       </Menu.Item>
           <Menu.Item
             name='Recieve'
