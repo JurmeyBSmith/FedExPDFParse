@@ -4,8 +4,6 @@ const pdf = require('pdf-parse');
 
 module.exports = (app, connection) => {
 
-    
-
     app.post('/search', (req, res) => {
         console.log('req.body: ', req.body.value);
         var name = req.body.name;
@@ -55,7 +53,7 @@ module.exports = (app, connection) => {
     })
 
     app.post('/api/testing', function (req, res) {
-
+        //Variables
         var date = new Date();
         var year = req.body.year;//date.getYear()+1900;
         console.log('The year:', year);
@@ -148,7 +146,6 @@ module.exports = (app, connection) => {
 
     }
 
-
     function pull_Data(a_dataText) {
         text = a_dataText.text.toLowerCase().match(/(:+|[a-z]+|\S+)/gi);
         //variables
@@ -179,7 +176,6 @@ module.exports = (app, connection) => {
                     }
                     break;
                 case "signed":
-
                     Signee = get_Signee(text, i);
                     break;
                 case "date":
@@ -196,7 +192,6 @@ module.exports = (app, connection) => {
                         ShipCountry = text[i + 8].toUpperCase();
                     }
                     break;
-
                 case "invoice":
                     if (text[i + 1].includes('number')) {
                         Reference = get_Reference(text, i);
@@ -296,7 +291,6 @@ module.exports = (app, connection) => {
             case "dec":
                 text1 = text1.replace('dec', '12');
                 break;
-
             default:
                 break;
         }
